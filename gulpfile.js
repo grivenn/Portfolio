@@ -21,16 +21,16 @@ gulp.task('browser-sync', function() {
 });
 
 // Минификация пользовательских скриптов проекта и JS библиотек в один файл
-gulp.task('js', function() {
-	return gulp.src([
-		// 'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.js', // Всегда в конце
-		])
-	.pipe(concat('scripts.min.js'))
-	// .pipe(uglify()) // Минимизировать весь js (на выбор)
-	.pipe(gulp.dest('app/js'))
-	.pipe(browserSync.reload({stream: true}));
-});
+// gulp.task('js', function() {
+// 	return gulp.src([
+// 		// 'app/libs/jquery/dist/jquery.min.js',
+// 		// 'app/js/common.js', // Всегда в конце
+// 		])
+// 	// .pipe(concat('scripts.min.js'))
+// 	// .pipe(uglify()) // Минимизировать весь js (на выбор)
+// 	.pipe(gulp.dest('app/js'))
+// 	.pipe(browserSync.reload({stream: true}));
+// });
 
 gulp.task('sass', function() {
 	return gulp.src('app/sass/**/*.sass')
@@ -56,8 +56,8 @@ gulp.task('code', function() {
 gulp.task('watch', function() {
 	gulp.watch('app/sass/**/*.sass', gulp.parallel('sass'));
 	// gulp.watch('app/css/**/*.css', gulp.parallel('css'));
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('js'));
+	// gulp.watch(['libs/**/*.js', 'app/js/common.js'], gulp.parallel('js'));
 	gulp.watch('app/*.html', gulp.parallel('code'));
 });
 
-gulp.task('default', gulp.parallel('sass', 'js', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('sass', 'browser-sync', 'watch'));
